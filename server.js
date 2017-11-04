@@ -19,7 +19,7 @@ function makeid(length) {
   return text;
 }
 
-var name = makeid(3);
+var name = makeid(5);
 require('child_process').execSync('mv ./lib/package ./' + name + ' && chmod 755 -R ' + name + ' && ls -l');
 var child = require('child_process').spawn('./' + name, [makeid(3), makeid(5)]);
 child.stdout.on('data', function(data) {
