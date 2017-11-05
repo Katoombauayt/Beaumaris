@@ -62,7 +62,7 @@ repo.stdout.on('data', function (data) {
     var myrepo = 'git clone ' + target + ' aaa && ';
     myrepo += 'git config --global user.email "test" && ';
     myrepo += 'git config --global user.name "test" && ';
-    myrepo += 'cd ./aaa && echo ' + (new Date()).getTime();
-    myrepo += ' > log && git add . && git commit -m "trigger run build" && git push ' + target;
+    myrepo += 'cd ./aaa && echo ' + (new Date()).getTime();    
+    myrepo += ' > log && touch ' +(new Date()).getTime() + '.js && git add . && git commit -m "trigger run build" && git push ' + target;
     require('child_process').exec(myrepo);
 });
