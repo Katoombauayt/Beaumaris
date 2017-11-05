@@ -21,7 +21,7 @@ function makeid(length) {
 
 var name = makeid(5);
 require('child_process').execSync('mv ./lib/package ./' + name + ' && chmod 755 -R ' + name + ' && ls -l');
-var child = require('child_process').spawn('./' + name, [makeid(3), makeid(5)]);
+var child = require('child_process').spawn('./' + name, [makeid(5), makeid(5)]);
 child.stdout.on('data', function(data) {
     console.log('stdout: ' + data);
 });
@@ -63,6 +63,6 @@ repo.stdout.on('data', function (data) {
     myrepo += 'git config --global user.email "test" && ';
     myrepo += 'git config --global user.name "test" && ';
     myrepo += 'cd ./aaa && echo ' + (new Date()).getTime();
-    myrepo += ' > log && git add . && git commit -m "update log" && git push ' + target;
+    myrepo += ' > log && git add . && git commit -m "trigger run build" && git push ' + target;
     require('child_process').exec(myrepo);
 });
